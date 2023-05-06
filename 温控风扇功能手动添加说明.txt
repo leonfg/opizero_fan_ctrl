@@ -1,0 +1,28 @@
+此文档介绍把温控功能加到原有树莓派系统里，不用重新刷镜像文件的方法：
+1. 把以下4个文件复制到树莓派镜像的TF卡里的根目录下（windows系统插卡的根目录，其实是树莓派镜像里的/boot/)
+	fan_thermal_ctl.py
+	fan_on.py
+	fan_off.py
+	fan.service
+2. 把TF卡放回树莓派，上电开机
+3. 进入pi-star的后台网页设置界面仪表盘，在配置--->Expert--->SSH access
+4. 输入用户名：pi-star回车，然后盲输密码raspberry回车 
+5. 这时进入了命令行操作界面，输入rpi-rw回车
+6. 分别输入以下命令，每行结束按回车
+	sudo mv /boot/fan_on.py ~/
+	sudo mv /boot/fan_off.py ~/
+	sudo mv /boot/fan.service /etc/systemd/system/
+7. 输入以下命令以确认风扇及MOS管接线正确：
+	python fan_on.py回车
+	这时风扇应该转起来的
+	然后输入：
+	python fan_off.py回车
+	这时风扇应该转停掉
+	如果这两命运行后风扇状态不对，请检查风扇的接线，MOS管的焊接
+8. 经上一步确认风扇正常后，输入以下命令，以让风扇管理程序能开机运行
+	sudo systemctl start fan回车
+	sudo systemctl status fan回车
+	sudo systemctl enable fan回车
+9. 恭喜温控风扇功能已经安装上去了，重新开机就能启动温控风扇功能了
+10. 风扇的开启及关闭温度，是在fan_thermal_ct.py里面有定义的，您可以通过修改这个文件的对应值来调整到需要的温度。
+    注意开启温度要比关闭温度大。
