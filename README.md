@@ -1,6 +1,6 @@
 # OrangePi Zero MMDVM Fan Controller
 
-An OrangePi Zero MMDVM fan controll service based on [wiringOP](https://github.com/orangepi-xunlong/wiringOP) . Tested on OrangePi Zero with [Pi-Star](https://www.pistar.uk/).
+An OrangePi Zero MMDVM fan controll service based on [wiringOP](https://github.com/orangepi-xunlong/wiringOP) . Tested on OrangePi Zero with [Pi-Star](https://www.pistar.uk/) V4.1.6
 
 The fan control pin is physical pin 12 （PA07）.
 
@@ -48,4 +48,3 @@ The fan control pin is physical pin 12 （PA07）.
        ```
    
        
-   
